@@ -1,5 +1,5 @@
 # Hisab Hijr Date using Ephemeris Calculations
-F1kM_Hisab is extend class of Ephemeris class from https://github.com/MarScaper/ephemeris
+F1kM_Hisab is extended class of Ephemeris class from https://github.com/MarScaper/ephemeris
 
 Calculate Hijr Date library using Ephemeris methode for Arduino IDE (C++), compare position of the moon when the sun sets (Hilal) on a certain date and a few days before.
 
