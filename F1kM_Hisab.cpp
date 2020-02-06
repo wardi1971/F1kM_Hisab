@@ -39,7 +39,7 @@ F1kM_Hisab::F1kM_Hisab()
 //===========================
 void  F1kM_Hisab::setHilalVisibilityFactor(float _HilalVisibilityFactor)
 {
-  HilalVisibilityFactor = float(_HilalVisibilityFactor);
+  HilalVisibilityFactor = (float)_HilalVisibilityFactor;
 }
 
 float F1kM_Hisab::MoonAltOnSunSet(unsigned int day, unsigned int month, unsigned int year) //Irtifa’ Hilāl
@@ -78,7 +78,7 @@ void F1kM_Hisab::Greg2HijrDate(int GDate,  int GMonth,  int GYear,  int& HDate, 
 
   if(DEBUG)  {Serial.print(dayFromMid,3); Serial.print("\t");}
 
-  if ( dayFromMid < 0.533 )
+  if ( dayFromMid < 0.566 )
   { LastMid = LastMid - 1;
     dayFromMid = dayFromMid + 0.6f;
   }
@@ -113,27 +113,29 @@ void F1kM_Hisab::Greg2HijrDate(int GDate,  int GMonth,  int GYear,  int& HDate, 
 
     if (MoonAlt_TD >= HilalVisibilityFactor and MoonAlt_YD < HilalVisibilityFactor)
     {
-		HMonth = HMonth + 1;
-		HDate = 1;
+	HMonth = HMonth + 1;
+	HDate = 1;
 
-		if (HMonth > 12) {
-			HMonth = 1;
-			HYear =  HYear + 1;
-			}
-      
-	  HDate = DateJD.day - HijrJD.day;
-      if (HDate < 30) {
-		break;
-		}
-      else {
-        HDate = 28; HijrJD.day  = HijrJD.day + 28;
+	if (HMonth > 12) {
+		HMonth = 1;
+		HYear =  HYear + 1;
+	}
+      	  
+      if ((DateJD.day - HijrJD.day)< 30) {
+		HDate = DateJD.day - HijrJD.day;
+		break;}
+      else  {
+	 	HDate =27;
+		HijrJD.day  = HijrJD.day + 27;
 		}
     }
-    else
-	{
-		HDate = HDate + 1;    HijrJD.day  = HijrJD.day + 1;
-	}
-
+    else 
+    {
+	HDate = HDate + 1;
+	HijrJD.day  = HijrJD.day + 1;
+    }
+    
+	
     MoonAlt_YD = MoonAlt_TD;
 	delay(0);
   }
@@ -171,3 +173,4 @@ void F1kM_Hisab::SholahTime(unsigned int day, unsigned int month, unsigned int y
     Serial.println("Sholah Time Can Not Calculate for this Coordinate");
   }*/
 }
+
