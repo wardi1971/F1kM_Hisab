@@ -8,7 +8,7 @@ void setup() {
 
   int jumlah_hari_setahun;
 
-  tahun = 2021; // Ganti jika ingin tahun yang lain (> 2018)
+  tahun = 2020; // Ganti jika ingin tahun yang lain (> 2018)
 
   if (is_leap(tahun))  {
     jumlah_hari_setahun = 366;
